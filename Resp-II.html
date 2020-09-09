@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Untitled
+ </title>
+ <link href="HTMLFiles/Untitled-7.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Title">
+ Mekanika Statistik: Distribusi Boltzmann
+</p>
+
+
+
+<p class="Author">
+ Fargiza A. M. Mulki
+</p>
+
+
+
+<p class="Institution">
+ <span style='font-weight: normal;'>Kelompok Keahlian Astronomi FMIPA, ITB</span>
+</p>
+
+
+
+<p class="AbstractSection">
+ Responsi II Proses Astrofisika I
+</p>
+
+
+
+<p class="Abstract">
+ Modul sederhana ini dibuat sebagai bahan tutorial atau responsi mengenai mekanika statistika, khusunya topik distribusi Boltzmann. Modul ini diharapkan dapat membantu mahasiswa dalam memperoleh kemampuan menalar secara fisis dengan logika dan pengetahuan matematika sederhana mengenai definisi <span style='font-style: italic;'>macrostate </span>dan <span style='font-style: italic;'>microstate</span> dari sebuah sistem klasik. Selain itu, mahasiswa akan dapat memperoleh pengertian distribusi Boltzmann melalui perhitungan-perhitungan sederhana yang berangkat dari pemahaman empirik. Pendekatan perumusan yang dituliskan di modul ini merupakan komplemen dari pendekatan formal yang telah diberikan di dalam kuliah.
+</p>
+
+
+
+<p class="Date">
+ Disusun: Rabu, 9 September 2020
+</p>
+
+
+
+<h3 class="Section">Pendahuluan</h3>
+
+<p class="Text">
+ Dalam mempelajari sifat-sifat sebuah sistem yang tersusun atas pertikel-partikel klasik (atom dan molekul yang menyusun sebuah gas), kajian terhadap sifat-sifat dinamik dari masing-masing individu partikel merupakan hal yang hampir mustahil dilakukan. Misalkan terdapat&nbsp;&nbsp;molekul dari sebuah&nbsp;&nbsp;gas ideal yang terkandung di sebuah bejana dengan volume&nbsp;&nbsp;dan temperatur mutlak . Pada keadaan normal di permukaan Bumi, nilai&nbsp;&nbsp;sangatlah besar, sementara itu individu-individu molekul tersebut terlalu kecil untuk dapat dilihat dan diobservasi. Molekul-molekul tersebut bergerak dengan kecepatan besar dan mengalami berbagai tumbukan, baik dengan dinding bejana maupun dengan sesamanya. Terlalu banyak dan merepotkan apabila kita menghitung satu demi satu kecepatan dan perpindahan molekul-molekul tersebut. Untuk menangani situasi dan persoalan tersebut, setidaknya terdapat tiga pendekatan kajian yang bisa digunakan.
+</p>
+
+
+
+<p class="Text">
+ Pendekatan pertama yaitu mempelajari aspek-aspek makroskopik dari sebuah sistem tanpa meninjau aspek mikroskopiknya. Dalam pendekatan ini, sistem diparameterisasi oleh variabel-variabel yang mendeskripsikan keadaan sistem, contohnya adalah tekanan&nbsp;&nbsp;<span style='font-style: italic;'>P</span>, volume <span style='font-style: italic;'>V</span>, dan temperatur <span style='font-style: italic;'>T</span>. Pemahaman mengenai keadaan statis dari sistem diperoleh dengan menelaah keterkaitan antar variabel tersebut. Persamaan yang mengaitkan variabel-variabel keadaan sistem disebut sebagai persamaan keadaan (Contoh: persamaan keadaan gas ideal <span style='font-style: italic;'>PV = nRT</span>). Pemahaman mengenai keadaan dinamis dari sebuah sistem diperoleh dengan melihat bagaimana variabel-variabel keadaan berubah apabila variabel-variabel lainnya diubah. Secara luas pendekatan ini dikenal sebagai <span style='font-style: italic;text-decoration: underline;'>termodinamika</span>.
+</p>
+
+
+
+<p class="Text">
+ Pendekatan kedua yaitu mempelajari keadaan atau perilaku makrsokopik sebuah sistem dengan melihat besaran rata-rata dari pertikel-pertikel penyusunnya. Dengan kata lain kita mengaitkan besaran-besaran makroskpoik seperti tekanan <span style='font-style: italic;'>P</span> dan energi dalam <span style='font-style: italic;'>E</span> (di literatur termodinamika biasa dinotasikan <span style='font-style: italic;'>U</span> ) dengan nilai rata-rata dari besaran-besaran mikroskopik, seperti kecepatan rata-rata partikel. Sebagai contoh: nilai tekanan yang terukur secara makroskopik dikaitkan dengan harga rata-rata dari kecepatan partikel saat menumbuk dinding bejana, melalui hubungan
+</p>
+
+
+
+<p class="Equation"><img src="HTMLFiles/Untitled-7_1.png" alt="Untitled-7_1.png" width="96" height="34" style="vertical-align:middle" /></p><p class="Text">
+ (Anda bisa buktikan sendiri atau berselancar di google). Secara luas pendekatan ini dikenal sebagai <span style='font-style: italic;text-decoration: underline;'>teori kinetik gas</span>.
+</p>
+
+
+
+<p class="Text">
+ Pendekatan ketiga yaitu mempelajari sebuah sistem dengan memandangnya sebagai suatu &lsquo;kumpulan&rsquo; atau populasi partikel-partikel yang menaati kaidah-kaidah statistika. Berbeda dengan teori kinetik gas, pendekatan ini tidak hanya meninjau harga rata-rata dari variabel-variabel sistem, melainkan menghitung keseluruhan nilai-nilai yang mungkin dengan menggunakan suatu fungsi distribusi statistika tertentu. Selain itu, pendekatan ini tidak secara langsung mengaitkan variabel-variabel mikroskopik (contoh kecepatan partikel) dengan variabel makroskopik (contoh tekanan gas). Pendekatan ini dikenal sebagai <span style='font-style: italic;text-decoration: underline;'>fisika/mekanika statistik</span>. Mengombinasikan mekanika statistik dengan teori kinetik gas dapat memberikan gambaran yang lebih utuh mengenai sebuah sistem dalam tinjauan mikroskopik. Kajian statistika Maxwell-Boltzmann adalah salah satu contoh kombinasi dari mekanika statistik dan teori kinetik gas.
+</p>
+
+
+
+<h3 class="Section"><span style='font-style: italic;'>Macrostate</span> dan <span style='font-style: italic;'>Microstate</span></h3>
+
+<p class="Text">
+ <span style='font-family: Times New Roman;'>Adalah Sebuah sistem termodinamika dapat dinyatakan dalam nilai-nilai volume, tekanan, dan temperatur, yang secara sederhana kita pahami sebagai keadaan makroskopik atau </span><span style='font-family: Times New Roman;font-style: italic;'>macrostate</span><span style='font-family: Times New Roman;'>. Dengan penalaran yang sederhana, dapat kita pahami bahwa terdapat sangat banyak </span><span style='font-family: Times New Roman;font-style: italic;'>microstate</span><span style='font-family: Times New Roman;'> berbeda (kecepatan molekul dan energi kinetik individu partikel) yang berkorespondensi dengan satu buah </span><span style='font-family: Times New Roman;font-style: italic;'>macrostate</span><span style='font-family: Times New Roman;'>.</span>
+</p>
+
+
+
+<p class="Text">
+ <span style='font-family: Times New Roman;'></span>
+</p>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Soal 1.
+</li>
+
+
+
+<p class='Item1Paragraph' style='font-family: Titillium Web;'>
+ Misalkan terdapat sebuah bejana dengan volume <span style='font-style: italic;'>V</span> yang terdiri dari <span style='font-style: italic;'>N</span> molekul yang boleh memiliki satu dari dua level energi, yaitu 0 dan <span><span><img src="HTMLFiles/Untitled-7_2.png" alt="Untitled-7_2.png" width="12" height="19" style="vertical-align:middle" /></span></span> . Molekul tersebut memiliki derajat kebebasan satu, artinya hanya bebas bergerak di satu dimensi ruang (model gas satu-dimensi). Harga dari energi totalnya adalah <span><span><img src="HTMLFiles/Untitled-7_3.png" alt="Untitled-7_3.png" width="43" height="19" style="vertical-align:middle" /></span></span>. Untuk sistem yang tidak memiliki kendala/aturan menganai batasan energi per partikel dan pembedaan partikel:
+</p>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Buatlah skema/tabel/diagram yang menunjukkan distribusi energi dari sistem tersebut
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Dari poin a, berapakah jumlah<span style='font-style: italic;'> macrostate-</span>nya? Berapakah jumlah <span style='font-style: italic;'>microstate </span>untuk setiap <span style='font-style: italic;'>macrostate</span>&#8232;
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Soal 2 (OPSIONAL).
+</li>
+
+
+
+<p class='Item1Paragraph' style='font-family: Titillium Web;'>
+ Sama dengan soal 1, namun untuk sistem yang memenuhi:
+</p>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Setiap partikel tidak boleh memiliki energi lebih dari <span><span><img src="HTMLFiles/Untitled-7_4.png" alt="Untitled-7_4.png" width="12" height="19" style="vertical-align:middle" /></span></span>
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Partikel-pertikel tersebut dapat dibedakan&#8232;
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Soal 3 (OPSIONAL).
+</li>
+
+
+
+<p class='Item1Paragraph' style='font-family: Titillium Web;'>
+ Sama dengan soal 1, namun untuk sistem yang memenuhi:
+</p>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Tidak ada aturan mengenai batasan energi
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Partikel-pertikel tersebut tidak dapat dibedakan&#8232;
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Soal 4.
+</li>
+
+
+
+<p class='Item1Paragraph' style='font-family: Titillium Web;'>
+ Sama dengan soal 1, namun energi total sistem <span><span><img src="HTMLFiles/Untitled-7_5.png" alt="Untitled-7_5.png" width="43" height="19" style="vertical-align:middle" /></span></span>
+</p>
+
+
+
+<p class="ExternalLanguage">
+ Syarat untuk masuk ke <span style='font-style: italic;'>section</span> berikutnya Anda harus bisa menjawab dan menyelesaikan khususnya soal nomor 4.
+</p>
+
+
+
+<h3 class="Section">Distribusi Boltzmann</h3>
+
+<p class="Text">
+ <span style='font-family: Times New Roman;'>Apabila Anda membandingkan hasil yang diperoleh dari menjawab soal 1 dan soal 4, Anda akan melihat bahwa jika jumlah partikel atau energi total dinaikkan, maka jumlah </span><span style='font-family: Times New Roman;font-style: italic;'>microstate</span><span style='font-family: Times New Roman;'> (dalam sebuah </span><span style='font-family: Times New Roman;font-style: italic;'>macrostate</span><span style='font-family: Times New Roman;'>) terbanyak akan meningkat, dengan kata lain ketidakteraturannya atau </span><span style='font-family: Times New Roman;font-style: italic;'>multlipicity </span><span style='font-family: Times New Roman;'>terbesarnya meningkat. Untuk&nbsp;&nbsp;</span><span style='font-family: Times New Roman;'><span><img src="HTMLFiles/Untitled-7_6.png" alt="Untitled-7_6.png" width="46" height="15" style="vertical-align:middle" /></span></span><span style='font-family: Times New Roman;font-style: italic;'>microstate</span><span style='font-family: Times New Roman;'> terbesarnya adalah 6 dan untuk </span><span style='font-family: Times New Roman;'><span><img src="HTMLFiles/Untitled-7_7.png" alt="Untitled-7_7.png" width="46" height="15" style="vertical-align:middle" /></span></span><span style='font-family: Times New Roman;'> </span><span style='font-family: Times New Roman;font-style: italic;'>microstate</span><span style='font-family: Times New Roman;'> terbesarnya adalah 12. Jika kita gunakan pendekatan teori kinetik gas, yakni </span><span style='font-family: Times New Roman;font-style: italic;'>E &prop; kT</span><span style='font-family: Times New Roman;'>, maka semakin tinggi temperatur sebuah gas, akan semakin besar derajat ketidakteraturannya (Apakah logika ini bisa Anda terima?)</span>
+</p>
+
+
+
+<p class='Text' style='font-family: Times New Roman;'>
+ <span style='font-family: Times New Roman;'>Sekarang, kita fokuskan pembahasan pada sistem yang dideskripsikan oleh soal 4 (</span><span style='font-family: Times New Roman;'><span><img src="HTMLFiles/Untitled-7_8.png" alt="Untitled-7_8.png" width="46" height="15" style="vertical-align:middle" /></span></span><span style='font-family: Times New Roman;'>)</span><span style='font-size: 11px;font-family: Times New Roman;'>. Sistem tersebut memiliki tiga buah </span><span style='font-size: 11px;font-family: Times New Roman;font-style: italic;'>macrostate</span><span style='font-size: 11px;font-family: Times New Roman;'> yang merepresentasikan energinya yang masing-masing memiliki jumlah </span><span style='font-size: 11px;font-family: Times New Roman;font-style: italic;'>microstate </span><span style='font-size: 11px;font-family: Times New Roman;'>4, 4, dan 12.&#8232;</span>
+</p>
+
+
+
+<li style='font-family: Titillium Web;'>
+ Soal 5.
+</li>
+
+
+
+<p class='Item1Paragraph' style='font-family: Titillium Web;'>
+ Hitunglah probabilitas terjadinya setiap <span style='font-style: italic;'>macrostate</span> tersebut<span style='font-family: Times New Roman;'>.&#8232;</span>
+</p>
+
+
+
+<p class='Text' style='font-family: Times New Roman;'>
+ Persoalan selanjutnya yang harus kita tinjau adalah menentukan banyaknya molekul (partikel) yang paling mungkin berada pada tingkat energi tertentu. Misalkan untuk tingkat energi 0, banyaknya molekul yang paling mungkin di suatu <span style='font-style: italic;'>macrostate</span> adalah banyaknya molekul yang memiliki energi 0 dikalikan dengan probablilitas terjadinya <span style='font-style: italic;'>macrostate</span> tersebut. Banyaknya molekul yang paling mungkin memiliki energi 0 merupakan penjumlahan hasil tersebut untuk semua <span style='font-style: italic;'>macrostate</span>.&#8232;
+</p>
+
+
+
+<li><span style='font-family: Titillium Web;'>Soal 6.</span></li>
+
+<p class="Item1Paragraph">
+ <span style='font-family: Titillium Web;'>Hitunglah banyaknya molekul yang paling mungkin memiliki energi sebesar:</span>
+</p>
+
+
+
+<li style='font-family: Titillium Web;'>
+ <span><span><img src="HTMLFiles/Untitled-7_9.png" alt="Untitled-7_9.png" width="21" height="19" style="vertical-align:middle" /></span></span>
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ <span><span><img src="HTMLFiles/Untitled-7_10.png" alt="Untitled-7_10.png" width="21" height="19" style="vertical-align:middle" /></span></span>
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ <span><span><img src="HTMLFiles/Untitled-7_11.png" alt="Untitled-7_11.png" width="21" height="19" style="vertical-align:middle" /></span></span>
+</li>
+
+
+
+<li style='font-family: Titillium Web;'>
+ <span><span><img src="HTMLFiles/Untitled-7_12.png" alt="Untitled-7_12.png" width="21" height="19" style="vertical-align:middle" /></span></span>
+</li>
+
+
+
+<p class="Item1Paragraph">
+ <span style='font-family: Titillium Web;'>Buatlah dalam tabel dengan bentuk:</span>
+</p>
+
+
+
+<span class='TableTitleLabelInline' style='font-family: Titillium Web;'>Table </span><span class='TableTitleLabelInline' style='font-family: Titillium Web;'>1</span><span class='TableTitleLabelInline' style='font-family: Titillium Web;'>.&nbsp;&nbsp;&nbsp;&nbsp;</span><span class='TableTitleLabelInline' style='font-family: Titillium Web;font-weight: normal;'>Banyak molekul vs tingkat energi</span><span style='font-family: Titillium Web;'><br /></span><span><img src="HTMLFiles/Untitled-7_13.png" alt="Untitled-7_13.png" width="366" height="129" style="vertical-align:middle" /></span><span style='font-family: Times New Roman;'><br /></span><span style='font-family: Titillium Web;'>Anda boleh menggunakan alat bantu hitung apa saja, termasuk Excell.</span>
+
+<span style='font-family: Times New Roman;'></span>
+
+<li><span style='font-family: Titillium Web;'>Soal 7.</span></li>
+
+<p class="Item1Paragraph">
+ <span style='font-family: Titillium Web;'>Buatlah sebuah plot dari tabel yang Anda peroleh di nomor 6, dengan sumbu </span><span style='font-family: Titillium Web;font-style: italic;'>y</span><span style='font-family: Titillium Web;'> adalah Banyak molekul dan sumbu </span><span style='font-family: Titillium Web;font-style: italic;'>x</span><span style='font-family: Titillium Web;'> adalah </span><span style='font-family: Titillium Web;font-style: italic;'>E</span>
+</p>
+
+
+
+<p class='Text' style='font-family: Times New Roman;'>
+ Dari kuliah di kelas, Anda sudah memperoleh pengetahuan teoretis mengenai distribusi Boltzmann yang memiliki bentuk:
+</p>
+
+
+
+<p class="Equation"><img src="HTMLFiles/Untitled-7_14.png" alt="Untitled-7_14.png" width="70" height="34" style="vertical-align:middle" /></p><li><span style='font-family: Titillium Web;'>Soal 8.</span></li>
+
+<p class="Item1Paragraph">
+ <span style='font-family: Titillium Web;'>Buatlah plot dari distribusi teoretis tersebut.&#8232;</span>
+</p>
+
+
+
+<li><span style='font-family: Titillium Web;'>Soal 9.</span></li>
+
+<p class="Item1Paragraph">
+ <span style='font-family: Titillium Web;'>Bandingkan hasil nomor 8 dan nomor 7, serta berikan analisis Anda</span><span style='font-family: Times New Roman;'>.&#8232;</span>
+</p>
+
+
+
+<li><span style='font-family: Titillium Web;'>Soal 10.</span></li>
+
+<p class="Item1Paragraph">
+ <span style='font-family: Titillium Web;'>Dengan demikian, apa yang bisa anda simpulkan mengenai distribusi Boltzmann?</span><span style='font-family: Times New Roman;'><br /></span>
+</p>
+
+
+
+<p class="ExternalLanguage">
+ Semua yang kita pelajari di atas belum menyertakan kontribusi degenerasi yang bisa terjadi pada tingkat-tingkat energi.
+</p>
+
+
+
+<p class="Text">
+ 
+</p>
+
+
+
+<p class="Text">
+ 
+</p>
+
+
+
+<p class="Epigraph">
+ &ldquo;Aku orangnya rumit. Tapi aku akan dengan senang hati menyamankan diriku pada segala apa yang telah Tuhan rancang untukku&rdquo; - Ludwig Van Beethoven
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>
